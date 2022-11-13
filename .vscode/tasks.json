@@ -7,33 +7,9 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/test/Movies.Cache.Test/Movies.Cache.Test.csproj",
+                "${workspaceFolder}/src/Movies.Worker/Movies.Worker.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/test/Movies.Cache.Test/Movies.Cache.Test.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "--project",
-                "${workspaceFolder}/test/Movies.Cache.Test/Movies.Cache.Test.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
