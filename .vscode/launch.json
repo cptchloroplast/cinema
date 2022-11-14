@@ -10,7 +10,8 @@
             "args": [],
             "cwd": "${workspaceFolder}/src/Movies.Worker",
             "console": "internalConsole",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

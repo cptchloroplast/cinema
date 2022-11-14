@@ -1,20 +1,23 @@
+using Movies.TMDB;
 namespace Movies.Worker;
-
 public class Worker : BackgroundService
 {
     private readonly ILogger<Worker> _logger;
-
-    public Worker(ILogger<Worker> logger)
+    private readonly ITMDBService _tmdb;
+    public Worker(ILogger<Worker> logger, ITMDBService tmdb)
     {
-        _logger = logger;
+        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        _tmdb = tmdb ?? throw new ArgumentNullException(nameof(tmdb));
     }
-
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override async Task ExecuteAsync(CancellationToken cancellation)
     {
-        while (!stoppingToken.IsCancellationRequested)
+        try
         {
-            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            await Task.Delay(1000, stoppingToken);
+            var movie = await _tmdb.GetMovie(348); // Alien
+        }
+        catch (Exception exception)
+        {
+            _logger.LogError(exception, exception.Message);
         }
     }
 }
