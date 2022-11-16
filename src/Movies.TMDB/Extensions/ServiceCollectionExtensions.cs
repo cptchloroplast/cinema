@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Net.Http.Headers;
-namespace Movies.TMDB;
+namespace Movies.TMDB.Extensions;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddTMDBServices(

@@ -1,5 +1,5 @@
 using Movies.Worker;
-using Movies.TMDB;
+using Movies.TMDB.Extensions;
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
