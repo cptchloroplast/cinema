@@ -1,8 +1,8 @@
 using Xunit;
 using Movies.Test;
 using System.Threading.Channels;
-using Movies.Queue;
-using Movies.Queue.Channels;
+using Movies.Queue.Consumers;
+using Movies.Queue.Producers;
 using Moq;
 namespace Movies.Cache.Test;
 public class ChannelQueueTest
@@ -20,10 +20,10 @@ public class ChannelQueueTest
     [AutoMockData]
     public async Task ProducesAndConsumesMessage(MockData value)
     {
-        var callback = Mock.Of<Func<MockData, Task>>();
+        var callback = Mock.Of<Func<MockData, CancellationToken, Task>>();
         _ = Task.Run(() => _consumer.Read(callback));
         await _producer.Write(value);
         await Task.Delay(1000);
-        Mock.Get(callback).Verify(x => x(value), Times.Once);
+        Mock.Get(callback).Verify(x => x(value, It.IsAny<CancellationToken>()), Times.Once);
     }
 }

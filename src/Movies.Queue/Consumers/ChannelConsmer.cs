@@ -1,5 +1,5 @@
 using System.Threading.Channels;
-namespace Movies.Queue.Channels;
+namespace Movies.Queue.Consumers;
 public sealed class ChannelConsumer<T> : IConsumer<T>
 {
     private readonly Channel<T> _channel;
@@ -8,13 +8,14 @@ public sealed class ChannelConsumer<T> : IConsumer<T>
     {
         _channel = channel ?? throw new ArgumentNullException(nameof(channel));
     }
-    public async Task Read(Func<T, Task> callback)
+    public async Task Read(Func<T, CancellationToken, Task> callback, CancellationToken cancellationToken = default)
     {
-        while (await _channel.Reader.WaitToReadAsync())
+        while (!cancellationToken.IsCancellationRequested 
+            && await _channel.Reader.WaitToReadAsync())
         {
             if (_channel.Reader.TryRead(out var value))
             {
-                await callback(value);
+                await callback(value, cancellationToken);
             }
         }
     }
