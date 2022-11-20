@@ -2,7 +2,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Movies.SQL.Factories;
 using Movies.SQL.Options;
-using Movies.SQL.Repositories;
 using FluentMigrator.Runner;
 using Movies.SQL.Migrations;
 namespace Movies.SQL.Extensions;
@@ -14,7 +13,6 @@ public static class ServiceCollectionExtensions
             .Bind(configuration.GetSection(nameof(DbConnectionOptions)))
             .ValidateDataAnnotations();
         services.AddSingleton<IDbConnectionFactory, SQLiteConnectionFactory>();
-        services.AddSingleton<IMovieRepository, SQLiteMovieRepository>();
         return services;
     }
     public static IServiceCollection AddSQLiteMigrationRunner(this IServiceCollection services, IConfiguration configuration)

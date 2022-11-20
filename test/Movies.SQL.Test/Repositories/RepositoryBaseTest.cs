@@ -13,13 +13,14 @@ using Movies.SQL.Extensions;
 using FluentMigrator.Runner;
 using System.Data;
 namespace Movies.SQL.Test.Repositories;
-public class SQLiteMovieRepositoryTest : IDisposable
+public abstract class RepositoryBaseTest<T> : IDisposable
+    where T : EntityBase
 {
-    private readonly IMovieRepository _repo;
-    private readonly IDbConnectionFactory _factory;
-    private readonly IOptionsMonitor<DbConnectionOptions> _options;
+    protected abstract IRepository<T> Repository { get; }
+    protected readonly IDbConnectionFactory _factory;
+    protected readonly IOptionsMonitor<DbConnectionOptions> _options;
     private readonly IDbConnection _hold;
-    public SQLiteMovieRepositoryTest()
+    public RepositoryBaseTest()
     {
         var configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
@@ -28,19 +29,18 @@ public class SQLiteMovieRepositoryTest : IDisposable
             .AddSQLite(configuration)
             .AddSQLiteMigrationRunner(configuration)
             .BuildServiceProvider();
-        using var scope = serviceProvider.CreateScope();
         
-        _factory = scope.ServiceProvider.GetRequiredService<IDbConnectionFactory>();
+        using var scope = serviceProvider.CreateScope();
         var options = new DbConnectionOptions();
         configuration.Bind(nameof(DbConnectionOptions), options);
+        _options = Mock.Of<IOptionsMonitor<DbConnectionOptions>>();
+        Mock.Get(_options).Setup(x => x.CurrentValue)
+            .Returns(options);
+        _factory = scope.ServiceProvider.GetRequiredService<IDbConnectionFactory>();
         _hold = _factory.CreateConnection(options.ConnectionString);
         _hold.Open();
         var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
         runner.MigrateUp();
-        _options = Mock.Of<IOptionsMonitor<DbConnectionOptions>>();
-        Mock.Get(_options).Setup(x => x.CurrentValue)
-            .Returns(options);
-        _repo = new SQLiteMovieRepository(_factory, _options);
     }
     public void Dispose()
     {
@@ -49,25 +49,24 @@ public class SQLiteMovieRepositoryTest : IDisposable
     }
     [Theory]
     [AutoMockData]
-    public async Task CRUD(MovieEntity entity)
+    public  async Task CRUD(T entity)
     {
         // Empty
-        var empty = await _repo.Read(entity.TmdbId);
+        var empty = await Repository.Read(entity.SystemKey);
         empty.Should().BeNull();
         // Create
-        await _repo.Create(entity);
-        var created = await _repo.Read(entity.TmdbId);
+        await Repository.Create(entity);
+        var created = await Repository.Read(entity.SystemKey);
         created.Should().NotBe(entity);
         created.Should().BeEquivalentTo(entity);
         // Update
-        entity.Title = "new title";
-        await _repo.Update(entity);
-        var updated = await _repo.Read(entity.TmdbId);
+        await Repository.Update(entity);
+        var updated = await Repository.Read(entity.SystemKey);
         updated.Should().NotBe(entity);
         updated.Should().BeEquivalentTo(entity);
         // Delete
-        await _repo.Delete(entity.TmdbId);
-        var deleted = await _repo.Read(entity.TmdbId);
+        await Repository.Delete(entity.SystemKey);
+        var deleted = await Repository.Read(entity.SystemKey);
         deleted.Should().BeNull();
     }
 }
