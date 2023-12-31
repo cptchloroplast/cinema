@@ -18,9 +18,9 @@ public abstract class CommandHandlerBase<T> : BackgroundService, ICommandHandler
     {
         while (!cancellationToken.IsCancellationRequested)
         {
-            await _consumer.Read(HandleCommandAsync, cancellationToken);
+            await _consumer.ReadAsync(HandleAsync, cancellationToken);
         }
     }
-    public abstract Task HandleCommandAsync(T command, CancellationToken cancellationToken = default);
+    public abstract Task HandleAsync(T command, CancellationToken cancellationToken = default);
     
 }
