@@ -10,14 +10,14 @@ public static class ServiceCollectionExtensions
         where T : class
     {
         services.AddSingleton<IConsumer<T>, ChannelConsumer<T>>();
-        services.TryAddSingleton<Channel<T>>(Channel.CreateUnbounded<T>());
+        services.TryAddSingleton(Channel.CreateUnbounded<T>());
         return services;
     }
     public static IServiceCollection AddChannelProducer<T>(this IServiceCollection services)
         where T : class
     {
         services.AddSingleton<IProducer<T>, ChannelProducer<T>>();
-        services.TryAddSingleton<Channel<T>>(Channel.CreateUnbounded<T>());
+        services.TryAddSingleton(Channel.CreateUnbounded<T>());
         return services;
     }
 }

@@ -21,8 +21,8 @@ public class ChannelQueueTest
     public async Task ProducesAndConsumesMessage(MockData value)
     {
         var callback = Mock.Of<Func<MockData, CancellationToken, Task>>();
-        _ = Task.Run(() => _consumer.Read(callback));
-        await _producer.Write(value);
+        _ = Task.Run(() => _consumer.ReadAsync(callback));
+        await _producer.WriteAsync(value);
         await Task.Delay(1000);
         Mock.Get(callback).Verify(x => x(value, It.IsAny<CancellationToken>()), Times.Once);
     }

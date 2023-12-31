@@ -8,7 +8,7 @@ public sealed class ChannelProducer<T> : IProducer<T>
     {
         _channel = channel ?? throw new ArgumentNullException(nameof(channel));
     }
-    public async Task Write(T value)
+    public async Task WriteAsync(T value)
     {
         await _channel.Writer.WriteAsync(value);
     }

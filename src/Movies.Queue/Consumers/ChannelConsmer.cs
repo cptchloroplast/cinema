@@ -8,7 +8,7 @@ public sealed class ChannelConsumer<T> : IConsumer<T>
     {
         _channel = channel ?? throw new ArgumentNullException(nameof(channel));
     }
-    public async Task Read(Func<T, CancellationToken, Task> callback, CancellationToken cancellationToken = default)
+    public async Task ReadAsync(Func<T, CancellationToken, Task> callback, CancellationToken cancellationToken = default)
     {
         while (!cancellationToken.IsCancellationRequested 
             && await _channel.Reader.WaitToReadAsync())
