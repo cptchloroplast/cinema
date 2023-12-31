@@ -1,4 +1,8 @@
 {
     "recommendations": [
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-dotnettools.csharp",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-sqlite"
     ]
 }
