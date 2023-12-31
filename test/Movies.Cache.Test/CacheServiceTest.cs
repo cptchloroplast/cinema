@@ -21,15 +21,15 @@ public class CacheServiceTest
     [AutoMockData]
     public async Task GetsDefaultWhenNoHit(string key)
     {
-        var result = await _service.Get(key);
+        var result = await _service.GetAsync(key);
         result.Should().BeNull();
     }
     [Theory]
     [AutoMockData]
     public async Task GetsValueThatHasBeenSet(string key, MockData value)
     {
-        await _service.Set(key, value);
-        var result = await _service.Get(key);
+        await _service.SetAsync(key, value);
+        var result = await _service.GetAsync(key);
         result.Should().BeEquivalentTo(value);
     }
 }

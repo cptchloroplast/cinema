@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-namespace Movies.Cache;
-public static class Registration
+namespace Movies.Cache.Extensions;
+public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddMemoryCache(this IServiceCollection services, IConfiguration configuration)
     {
