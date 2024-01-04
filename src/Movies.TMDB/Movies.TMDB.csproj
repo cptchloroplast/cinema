@@ -19,4 +19,8 @@
     <PackageReference Include="System.Text.Json" Version="6.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Movies.SQL\Movies.SQL.csproj" />
+  </ItemGroup>
+
 </Project>

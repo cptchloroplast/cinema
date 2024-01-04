@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations; 
-namespace Movies.TMDB;
+namespace Movies.TMDB.Options;
 public class TMDBOptions
 {
     [Url]
