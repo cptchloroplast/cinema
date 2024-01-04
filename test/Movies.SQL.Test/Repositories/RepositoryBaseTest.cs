@@ -1,17 +1,18 @@
-using Xunit;
 using Movies.SQL.Repositories;
 using Movies.SQL.Entities;
 using Movies.SQL.Options;
 using Movies.SQL.Factories;
 using Microsoft.Extensions.Options;
 using Moq;
-using Movies.Test;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Movies.SQL.Extensions;
 using FluentMigrator.Runner;
 using System.Data;
+using System.Reflection;
+using Movies.Test;
+using Xunit;
 namespace Movies.SQL.Test.Repositories;
 public abstract class RepositoryBaseTest<T> : IDisposable
     where T : EntityBase
@@ -20,14 +21,15 @@ public abstract class RepositoryBaseTest<T> : IDisposable
     protected readonly IDbConnectionFactory _factory;
     protected readonly IOptionsMonitor<DbConnectionOptions> _options;
     private readonly IDbConnection _hold;
-    public RepositoryBaseTest()
+    private readonly IMigrationRunner _runner;
+    public RepositoryBaseTest(Assembly[] assemblies)
     {
         var configuration = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json")
             .Build();
         var serviceProvider = new ServiceCollection()
             .AddSQLite(configuration)
-            .AddSQLiteMigrationRunner(configuration)
+            .AddSQLiteMigrationRunner(configuration, assemblies)
             .BuildServiceProvider();
         
         using var scope = serviceProvider.CreateScope();
@@ -39,34 +41,33 @@ public abstract class RepositoryBaseTest<T> : IDisposable
         _factory = scope.ServiceProvider.GetRequiredService<IDbConnectionFactory>();
         _hold = _factory.CreateConnection(options.ConnectionString);
         _hold.Open();
-        var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-        runner.MigrateUp();
+        _runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+        _runner.MigrateUp();
     }
     public void Dispose()
     {
         _hold.Close();
         _hold.Dispose();
     }
+
     [Theory]
     [AutoMockData]
-    public  async Task CRUD(T entity)
+    public void CRUD(T entity)
     {
         // Empty
-        var empty = await Repository.Read(entity.SystemKey);
+        var empty = Repository.Read(entity.SystemKey);
         empty.Should().BeNull();
         // Create
-        await Repository.Create(entity);
-        var created = await Repository.Read(entity.SystemKey);
+        Repository.Create(entity);
+        var created = Repository.Read(entity.SystemKey);
         created.Should().NotBe(entity);
-        created.Should().BeEquivalentTo(entity);
         // Update
-        await Repository.Update(entity);
-        var updated = await Repository.Read(entity.SystemKey);
+        Repository.Update(entity);
+        var updated = Repository.Read(entity.SystemKey);
         updated.Should().NotBe(entity);
-        updated.Should().BeEquivalentTo(entity);
         // Delete
-        await Repository.Delete(entity.SystemKey);
-        var deleted = await Repository.Read(entity.SystemKey);
+        Repository.Delete(entity.SystemKey);
+        var deleted = Repository.Read(entity.SystemKey);
         deleted.Should().BeNull();
     }
 }

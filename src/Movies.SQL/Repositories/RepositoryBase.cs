@@ -5,14 +5,14 @@ using Movies.SQL.Factories;
 using Movies.SQL.Entities;
 using Microsoft.Extensions.Logging;
 namespace Movies.SQL.Repositories;
-public abstract class RepositoryBase<T> : IRepository<T> 
-    where T : EntityBase
+public abstract class RepositoryBase<TEntity> : IRepository<TEntity> 
+    where TEntity : EntityBase
 {
-    protected readonly ILogger<RepositoryBase<T>> _logger;
+    protected readonly ILogger<RepositoryBase<TEntity>> _logger;
     private readonly IDbConnectionFactory _factory;
     private readonly IOptionsMonitor<DbConnectionOptions> _options;
     public RepositoryBase(
-        ILogger<RepositoryBase<T>> logger,
+        ILogger<RepositoryBase<TEntity>> logger,
         IDbConnectionFactory factory,
         IOptionsMonitor<DbConnectionOptions> options)
     {
@@ -20,21 +20,14 @@ public abstract class RepositoryBase<T> : IRepository<T>
         _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         _options = options ?? throw new ArgumentNullException(nameof(options));
     }
-    protected TResult UseConnection<TResult>(Func<IDbConnection, TResult> callback) where TResult : Task
+    protected TResult UseConnection<TResult>(Func<IDbConnection, TResult> callback) 
     {
         using var connection = _factory.CreateConnection(_options.CurrentValue.ConnectionString);
-        try
-        {
-            connection.Open();
-            return callback(connection);
-        }
-        finally
-        {
-            connection.Close();
-        }
+        connection.Open();
+        return callback(connection);
     }
-    public abstract Task Create(T entity);
-    public abstract Task<T> Read(Guid key);
-    public abstract Task Update(T entity);
-    public abstract Task Delete(Guid key);
+    public abstract int Create(TEntity entity);
+    public abstract TEntity? Read(Guid key);
+    public abstract int Update(TEntity entity);
+    public abstract int Delete(Guid key);
 }

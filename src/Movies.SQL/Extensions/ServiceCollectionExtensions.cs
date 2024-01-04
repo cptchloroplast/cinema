@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Movies.SQL.Factories;
 using Movies.SQL.Options;
 using FluentMigrator.Runner;
-using Movies.SQL.Migrations;
+using System.Reflection;
 namespace Movies.SQL.Extensions;
 public static class ServiceCollectionExtensions
 {
@@ -15,7 +15,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IDbConnectionFactory, SQLiteConnectionFactory>();
         return services;
     }
-    public static IServiceCollection AddSQLiteMigrationRunner(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddSQLiteMigrationRunner(this IServiceCollection services, IConfiguration configuration, Assembly[] assemblies)
     {
         var options = new DbConnectionOptions();
         configuration.Bind(nameof(DbConnectionOptions), options);
@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
             .ConfigureRunner(x => x
                 .AddSQLite()
                 .WithGlobalConnectionString(options.ConnectionString)
-                .WithMigrationsIn(typeof(AddMovieTable).Assembly))
+                .WithMigrationsIn(assemblies))
             .AddLogging(x => x.AddFluentMigratorConsole());
         return services;
     }
