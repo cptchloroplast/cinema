@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Movies.SQL\Movies.SQL.csproj" />
+    <ProjectReference Include="..\Movies.SQL.Migrations\Movies.SQL.Migrations.csproj" />
   </ItemGroup>
 
   <ItemGroup>

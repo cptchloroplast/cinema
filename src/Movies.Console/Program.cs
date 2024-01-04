@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using FluentMigrator.Runner;
 using Microsoft.Extensions.Configuration;
-
 using Movies.SQL.Extensions;
+using Movies.SQL.Migrations;
+using System.Reflection;
 
 var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
@@ -10,7 +11,9 @@ var configuration = new ConfigurationBuilder()
     .Build();
 
 var serviceProvider = new ServiceCollection()
-    .AddSQLiteMigrationRunner(configuration)
+    .AddSQLiteMigrationRunner(configuration, new Assembly[] { 
+        typeof(AddTmdbMovieTable).Assembly, 
+    })
     .BuildServiceProvider();
 
 using var scope = serviceProvider.CreateScope();
