@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Movies.Test\Movies.Test.csproj" />
-    <ProjectReference Include="..\..\src\Movies.Cache\Movies.Cache.csproj" />
+    <ProjectReference Include="..\..\src\Okkema.Cache\Okkema.Cache.csproj" />
   </ItemGroup>
 
 </Project>

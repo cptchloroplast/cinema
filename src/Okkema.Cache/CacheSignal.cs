@@ -1,4 +1,4 @@
-﻿namespace Movies.Cache;
+﻿namespace Okkema.Cache;
 public sealed class CacheSignal<T>
 {
     private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);

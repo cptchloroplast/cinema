@@ -4,7 +4,7 @@ using System.Threading.Channels;
 using Movies.Queue.Consumers;
 using Movies.Queue.Producers;
 using Moq;
-namespace Movies.Cache.Test;
+namespace Okkema.Cache.Test;
 public class ChannelQueueTest
 {
     private readonly Channel<MockData> _channel;

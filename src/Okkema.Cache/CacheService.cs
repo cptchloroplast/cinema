@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
-namespace Movies.Cache;
+namespace Okkema.Cache;
 public sealed class CacheService<T> : ICacheService<T> where T : class, new()
 {
     private readonly IDistributedCache _cache;

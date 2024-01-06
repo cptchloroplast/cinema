@@ -4,7 +4,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Movies.Test;
 using FluentAssertions;
-namespace Movies.Cache.Test;
+namespace Okkema.Cache.Test;
 public class CacheServiceTest
 {
     private readonly IDistributedCache _cache;

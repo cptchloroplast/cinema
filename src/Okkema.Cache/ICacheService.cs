@@ -1,4 +1,4 @@
-namespace Movies.Cache;
+namespace Okkema.Cache;
 public interface ICacheService<T>
 {
     public Task<T?> GetAsync(string key, CancellationToken token);
