@@ -37,14 +37,7 @@ public class TestEntityRepository : RepositoryBase<TestEntity>
     )";
   public override int Create(TestEntity entity) =>
     UseConnection((IDbConnection connection) => 
-      {
-        var input = entity with { };
-        var now = DateTime.UtcNow;
-        input.SystemCreatedDate = now;
-        input.SystemModifiedDate = now;
-        input.SystemKey = Guid.NewGuid();
-        return connection.ExecuteCommand(CREATE, input);
-      });
+      connection.ExecuteCommand(CREATE, entity));
 
   private const string DELETE = @"
     DELETE FROM TestEntity
@@ -83,8 +76,7 @@ public class TestEntityRepository : RepositoryBase<TestEntity>
   public override int Update(TestEntity entity) => 
     UseConnection((IDbConnection connection) => 
       {
-        var input = entity with { };
-        input.SystemModifiedDate = DateTime.UtcNow;
-        return connection.ExecuteCommand(UPDATE, input);
+        entity.SystemModifiedDate = DateTime.UtcNow;
+        return connection.ExecuteCommand(UPDATE, entity);
       });
 }
