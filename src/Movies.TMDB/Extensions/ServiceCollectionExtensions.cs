@@ -3,8 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Movies.TMDB.Options;
 using Movies.TMDB.Services;
 using Movies.TMDB.Repositories;
-using Movies.SQL.Repositories;
-using Movies.TMDB.Entities;
+using Movies.TMDB.Mappers;
 namespace Movies.TMDB.Extensions;
 public static class ServiceCollectionExtensions
 {
@@ -12,8 +11,9 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services, 
         IConfiguration configuration)
     {
+        services.AddAutoMapper(typeof(TMDBProfile));
         services.AddSingleton<ITMDBService, TMDBService>();
-        services.AddSingleton<IRepository<TMDBMovieEntity>, TMDBMovieRepository>();
+        services.AddSingleton<ITMDBMovieRepository, TMDBMovieRepository>();
         services.AddHttpClient(nameof(TMDBService), client => 
         {  
             client.BaseAddress = new Uri(TMDBOptions.BaseAddress);

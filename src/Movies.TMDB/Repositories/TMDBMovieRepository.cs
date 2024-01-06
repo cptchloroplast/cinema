@@ -7,7 +7,7 @@ using Movies.TMDB.Entities;
 using Microsoft.Extensions.Logging;
 using Movies.SQL.Extensions;
 namespace Movies.TMDB.Repositories;
-public class TMDBMovieRepository : RepositoryBase<TMDBMovieEntity>
+public class TMDBMovieRepository : RepositoryBase<TMDBMovieEntity>, ITMDBMovieRepository
 {
     public TMDBMovieRepository(
         ILogger<TMDBMovieRepository> logger,
@@ -131,4 +131,34 @@ public class TMDBMovieRepository : RepositoryBase<TMDBMovieEntity>
     public override int Delete(Guid SystemKey) =>
         UseConnection((IDbConnection connection) => 
             connection.ExecuteCommand(DELETE, new { SystemKey }));
+    private const string READ_TMDB = 
+        @"SELECT
+            Adult,
+            BackdropPath,
+            Budget,
+            Homepage,
+            Id,
+            ImdbId, 
+            OriginalLanguage,
+            OriginalTitle,
+            Overview,
+            Popularity,
+            PosterPath,
+            ReleaseDate,
+            Revenue,
+            Runtime,
+            Status,
+            Tagline,
+            Title,
+            Video,
+            VoteAverage,
+            VoteCount,
+            SystemKey,
+            SystemCreatedDate,
+            SystemModifiedDate
+        FROM TmdbMovie 
+        WHERE Id = @Id";
+    public TMDBMovieEntity? Read(int Id) =>
+        UseConnection((IDbConnection connection) => 
+            connection.ExecuteQuery<TMDBMovieEntity>(READ_TMDB, new { Id }));
 }
