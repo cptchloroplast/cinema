@@ -2,9 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <PackageId>Okkema.SQL</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Benjamin Okkema</Authors>
+    <Company>Okkema Labs</Company>
+    <PackageDescription>Okkema Labs SQL Utilities</PackageDescription>
+    <RepositoryUrl>https://github.com/cptchloroplast/movies</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentMigrator.Runner" Version="3.3.2" />

@@ -1,0 +1,33 @@
+name: nuget
+on:
+  push:
+    paths:
+      - src/**
+      - test/**
+      - Movies.sln
+      - nuget.config
+      - .github/workflows/nuget.yaml
+concurrency: nuget
+jobs:
+  nuget:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup dotnet
+        uses: nuget/setup-dotnet@v3
+        with:
+          dotnet-version: 6.x
+          source-url: https://nuget.pkg.github.com/cptchloroplast/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Build solution
+        run: dotnet build
+      - name: Test solution
+        run: dotnet test
+      - name: Package release
+        run: dotnet pack --configuration Release
+      - name: Publish release
+        run: dotnet nuget push src/**/bin/Release/*.nupkg
+      
+     

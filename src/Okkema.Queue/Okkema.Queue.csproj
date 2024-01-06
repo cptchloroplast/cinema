@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <PackageId>Okkema.Queue</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Benjamin Okkema</Authors>
+    <Company>Okkema Labs</Company>
+    <PackageDescription>Okkema Labs Queue Utilities</PackageDescription>
+    <RepositoryUrl>https://github.com/cptchloroplast/movies</RepositoryUrl>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
