@@ -5,7 +5,6 @@ on:
       - src/**
       - test/**
       - Movies.sln
-      - nuget.config
       - .github/workflows/nuget.yaml
 concurrency: nuget
 jobs:
@@ -28,6 +27,6 @@ jobs:
       - name: Package release
         run: dotnet pack --configuration Release
       - name: Publish release
-        run: dotnet nuget push src/**/bin/Release/*.nupkg
+        run: dotnet nuget push src/Okkema.*/bin/Release/*.nupkg --skip-duplicate
       
      

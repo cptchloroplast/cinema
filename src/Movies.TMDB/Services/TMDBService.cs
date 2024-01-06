@@ -18,9 +18,9 @@ public sealed class TMDBService : ITMDBService
         _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         _options = options ?? throw new ArgumentNullException(nameof(options));
     }
-    private string AddQueryString(string route, IDictionary<string, string>? query = default)
+    private string AddQueryString(string route, IDictionary<string, string?>? query = default)
     {
-        if (query is null) query = new Dictionary<string, string>();
+        if (query is null) query = new Dictionary<string, string?>();
         query.Add("api_key", _options.CurrentValue.ApiKey);
         return QueryHelpers.AddQueryString(route, query);
     }

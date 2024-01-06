@@ -1,17 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <ProjectReference Include="..\Movies.Commands\Movies.Commands.csproj" />
-    <ProjectReference Include="..\Okkema.Messages\Okkema.Messages.csproj" />
-    <ProjectReference Include="..\Okkema.Queue\Okkema.Queue.csproj" />
-    <ProjectReference Include="..\Movies.TMDB\Movies.TMDB.csproj" />
-    <ProjectReference Include="..\Okkema.SQL\Okkema.SQL.csproj" />
-  </ItemGroup>
-
+  
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Okkema.Messages" Version="0.*" />
+    <PackageReference Include="Okkema.Queue" Version="0.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Movies.Commands\Movies.Commands.csproj" />
+    <ProjectReference Include="..\Movies.TMDB\Movies.TMDB.csproj" />
+  </ItemGroup>
 
 </Project>
