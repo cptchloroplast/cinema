@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Movies.Commands\Movies.Commands.csproj" />
+    <ProjectReference Include="..\Okkema.Messages\Okkema.Messages.csproj" />
     <ProjectReference Include="..\Okkema.Queue\Okkema.Queue.csproj" />
     <ProjectReference Include="..\Movies.TMDB\Movies.TMDB.csproj" />
     <ProjectReference Include="..\Okkema.SQL\Okkema.SQL.csproj" />
@@ -12,11 +13,5 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
-  </ItemGroup>
 
 </Project>

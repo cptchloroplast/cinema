@@ -1,19 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
 using Okkema.Queue.Consumers;
 using Movies.TMDB.Services;
-using Movies.Commands.Movies;
 using Movies.TMDB.Entities;
 using AutoMapper;
 using Movies.TMDB.Repositories;
-namespace Movies.Commands.Handlers.Movies;
-public class CreateMovieV1Handler : CommandHandlerBase<CreateMovieV1>
+using Okkema.Messages.Handlers;
+namespace Movies.Commands.Handlers;
+public class CreateTMDBMovieV1Handler : MessageHandlerBase<CreateTMDBMovieV1>
 {
     private readonly IMapper _mapper;
     private readonly ITMDBService _tmdbService;
     private readonly ITMDBMovieRepository _movieRepository;
-    public CreateMovieV1Handler(
-        ILogger<CreateMovieV1Handler> logger,
-        IConsumer<CreateMovieV1> consumer,
+    public CreateTMDBMovieV1Handler(
+        ILogger<CreateTMDBMovieV1Handler> logger,
+        IConsumer<CreateTMDBMovieV1> consumer,
         IMapper mapper,
         ITMDBService tmdbService,
         ITMDBMovieRepository movieRepository) : base (logger, consumer)
@@ -22,7 +22,7 @@ public class CreateMovieV1Handler : CommandHandlerBase<CreateMovieV1>
         _tmdbService = tmdbService ?? throw new ArgumentNullException(nameof(tmdbService));
         _movieRepository = movieRepository ?? throw new ArgumentNullException(nameof(movieRepository));
     }
-    public override async Task HandleAsync(CreateMovieV1 command, CancellationToken cancellationToken = default)
+    public override async Task HandleAsync(CreateTMDBMovieV1 command, CancellationToken cancellationToken = default)
     {
         var entity = _movieRepository.Read(command.TmdbId);
         if (entity is null)

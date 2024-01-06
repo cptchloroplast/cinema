@@ -1,6 +1,6 @@
 using Movies.TMDB.Extensions;
 using Movies.Commands.Handlers.Extensions;
-using Movies.Commands.Movies;
+using Movies.Commands;
 using Okkema.Queue.Extensions;
 using Okkema.Queue.Producers;
 using Okkema.SQL.Extensions;
@@ -17,16 +17,16 @@ IHost host = Host.CreateDefaultBuilder(args)
             .AddSQLite(configuration)
             .AddTMDBServices(configuration)
             .AddMovieCommandHandlers(configuration)
-            .AddChannelProducer<CreateMovieV1>();
+            .AddChannelProducer<CreateTMDBMovieV1>();
     })
     .Build();
 
 var services = host.Services;
 using var scope = services.CreateScope();
-var producer = scope.ServiceProvider.GetRequiredService<IProducer<CreateMovieV1>>();
+var producer = scope.ServiceProvider.GetRequiredService<IProducer<CreateTMDBMovieV1>>();
 for (var i = 1; i <= 500; i++)
 {
-    await producer.WriteAsync(new CreateMovieV1 { TmdbId = i });
+    await producer.WriteAsync(new CreateTMDBMovieV1 { TmdbId = i });
 }
 
 await host.RunAsync();

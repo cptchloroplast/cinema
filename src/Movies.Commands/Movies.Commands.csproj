@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Okkema.Messages\Okkema.Messages.csproj" />
+  </ItemGroup>
+
 </Project>

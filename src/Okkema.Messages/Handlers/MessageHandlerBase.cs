@@ -1,14 +1,14 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Okkema.Queue.Consumers;
-namespace Movies.Commands.Handlers;
-public abstract class CommandHandlerBase<T> : BackgroundService, ICommandHandler<T>
-    where T : CommandBase
+namespace Okkema.Messages.Handlers;
+public abstract class MessageHandlerBase<T> : BackgroundService, IMessageHandler<T>
+    where T : MessageBase
 {
-    protected readonly ILogger<CommandHandlerBase<T>> _logger;
+    protected readonly ILogger<MessageHandlerBase<T>> _logger;
     private readonly IConsumer<T> _consumer;
-    public CommandHandlerBase(
-        ILogger<CommandHandlerBase<T>> logger,
+    public MessageHandlerBase(
+        ILogger<MessageHandlerBase<T>> logger,
         IConsumer<T> consumer)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -21,6 +21,6 @@ public abstract class CommandHandlerBase<T> : BackgroundService, ICommandHandler
             await _consumer.ReadAsync(HandleAsync, cancellationToken);
         }
     }
-    public abstract Task HandleAsync(T command, CancellationToken cancellationToken = default);
+    public abstract Task HandleAsync(T message, CancellationToken cancellationToken = default);
     
 }
