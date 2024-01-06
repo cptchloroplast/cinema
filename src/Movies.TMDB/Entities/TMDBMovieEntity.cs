@@ -1,4 +1,4 @@
-using Movies.SQL.Entities;
+using Okkema.SQL.Entities;
 namespace Movies.TMDB.Entities;
 public record TMDBMovieEntity : EntityBase
 {

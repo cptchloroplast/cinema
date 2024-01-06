@@ -1,9 +1,8 @@
-using Movies.SQL.Repositories;
+using Okkema.SQL.Repositories;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System.Reflection;
-using Movies.SQL.Migrations;
-namespace Movies.SQL.Test.Repositories;
+namespace Okkema.SQL.Test.Repositories;
 public class TestEntityRepositoryTest : RepositoryBaseTest<TestEntity>
 {
     private readonly TestEntityRepository _repo;

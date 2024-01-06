@@ -23,9 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.TMDB", "src\Movies.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.TMDB.Test", "test\Movies.TMDB.Test\Movies.TMDB.Test.csproj", "{3F074AF3-371E-4D78-AD30-D9BC3B6E9224}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.SQL", "src\Movies.SQL\Movies.SQL.csproj", "{CBD3B8E4-C0D7-4A86-A2CF-ADCC959624A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okkema.SQL", "src\Okkema.SQL\Okkema.SQL.csproj", "{CBD3B8E4-C0D7-4A86-A2CF-ADCC959624A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.SQL.Test", "test\Movies.SQL.Test\Movies.SQL.Test.csproj", "{7457C962-AF1B-4333-9085-332ABC15C09F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okkema.SQL.Test", "test\Okkema.SQL.Test\Okkema.SQL.Test.csproj", "{7457C962-AF1B-4333-9085-332ABC15C09F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Console", "src\Movies.Console\Movies.Console.csproj", "{D0664F43-D634-4506-9106-4CF6A13D51D9}"
 EndProject
@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Commands.Handlers", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Commands", "src\Movies.Commands\Movies.Commands.csproj", "{C7FAC35A-A261-4EBD-8B16-1B0E377B20A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.SQL.Migrations", "src\Movies.SQL.Migrations\Movies.SQL.Migrations.csproj", "{B8395917-92A4-4D2B-8674-A62B89A6883E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Migrations", "src\Movies.Migrations\Movies.Migrations.csproj", "{B8395917-92A4-4D2B-8674-A62B89A6883E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

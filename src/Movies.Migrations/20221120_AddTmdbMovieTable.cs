@@ -1,5 +1,5 @@
 using FluentMigrator;
-namespace Movies.SQL.Migrations;
+namespace Movies.Migrations;
 [Migration(20221120)]
 public class AddTmdbMovieTable : Migration
 {

@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Movies.SQL\Movies.SQL.csproj" />
-    <ProjectReference Include="..\Movies.SQL.Migrations\Movies.SQL.Migrations.csproj" />
+    <ProjectReference Include="..\Okkema.SQL\Okkema.SQL.csproj" />
+    <ProjectReference Include="..\Movies.Migrations\Movies.Migrations.csproj" />
   </ItemGroup>
 
   <ItemGroup>

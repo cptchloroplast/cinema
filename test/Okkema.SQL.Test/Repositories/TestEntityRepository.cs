@@ -1,12 +1,11 @@
 using System.Data;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Movies.SQL.Extensions;
-using Movies.SQL.Factories;
-using Movies.SQL.Options;
-using Movies.SQL.Repositories;
-
-namespace Movies.SQL.Test.Repositories;
+using Okkema.SQL.Extensions;
+using Okkema.SQL.Factories;
+using Okkema.SQL.Options;
+using Okkema.SQL.Repositories;
+namespace Okkema.SQL.Test.Repositories;
 public class TestEntityRepository : RepositoryBase<TestEntity>
 {
   public TestEntityRepository(
@@ -36,14 +35,14 @@ public class TestEntityRepository : RepositoryBase<TestEntity>
       @SystemModifiedDate
     )";
   public override int Create(TestEntity entity) =>
-    UseConnection((IDbConnection connection) => 
+    UseConnection((IDbConnection connection) =>
       connection.ExecuteCommand(CREATE, entity));
 
   private const string DELETE = @"
     DELETE FROM TestEntity
     WHERE SystemKey = @SystemKey";
-  public override int Delete(Guid SystemKey) => 
-    UseConnection((IDbConnection connection) => 
+  public override int Delete(Guid SystemKey) =>
+    UseConnection((IDbConnection connection) =>
       connection.ExecuteCommand(DELETE, new { SystemKey }));
 
   private const string READ = @"
@@ -73,8 +72,8 @@ public class TestEntityRepository : RepositoryBase<TestEntity>
     SystemModifiedDate = @SystemModifiedDate
   WHERE
     SystemKey = @SystemKey";
-  public override int Update(TestEntity entity) => 
-    UseConnection((IDbConnection connection) => 
+  public override int Update(TestEntity entity) =>
+    UseConnection((IDbConnection connection) =>
       {
         entity.SystemModifiedDate = DateTime.UtcNow;
         return connection.ExecuteCommand(UPDATE, entity);

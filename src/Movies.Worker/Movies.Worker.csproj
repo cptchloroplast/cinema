@@ -13,5 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Movies.TMDB\Movies.TMDB.csproj" />
+    <ProjectReference Include="..\Movies.Commands.Handlers\Movies.Commands.Handlers.csproj" />
   </ItemGroup>
 </Project>

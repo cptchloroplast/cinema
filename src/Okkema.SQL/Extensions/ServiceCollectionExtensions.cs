@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Movies.SQL.Factories;
-using Movies.SQL.Options;
+using Okkema.SQL.Factories;
+using Okkema.SQL.Options;
 using FluentMigrator.Runner;
 using System.Reflection;
-namespace Movies.SQL.Extensions;
+namespace Okkema.SQL.Extensions;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddSQLite(this IServiceCollection services, IConfiguration configuration)

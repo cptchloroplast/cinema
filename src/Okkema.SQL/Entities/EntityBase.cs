@@ -1,4 +1,4 @@
-namespace Movies.SQL.Entities;
+namespace Okkema.SQL.Entities;
 public abstract record EntityBase 
 {
     public Guid SystemKey { get; init; } = Guid.NewGuid();

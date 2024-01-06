@@ -1,19 +1,19 @@
-using Movies.SQL.Repositories;
-using Movies.SQL.Entities;
-using Movies.SQL.Options;
-using Movies.SQL.Factories;
+using Okkema.SQL.Repositories;
+using Okkema.SQL.Entities;
+using Okkema.SQL.Options;
+using Okkema.SQL.Factories;
 using Microsoft.Extensions.Options;
 using Moq;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Movies.SQL.Extensions;
+using Okkema.SQL.Extensions;
 using FluentMigrator.Runner;
 using System.Data;
 using System.Reflection;
 using Movies.Test;
 using Xunit;
-namespace Movies.SQL.Test.Repositories;
+namespace Okkema.SQL.Test.Repositories;
 public abstract class RepositoryBaseTest<T> : IDisposable
     where T : EntityBase
 {

@@ -1,5 +1,5 @@
 using System.Data;
-namespace Movies.SQL.Extensions;
+namespace Okkema.SQL.Extensions;
 public static class DbConnectionExtensions
 {
   /// <summary>

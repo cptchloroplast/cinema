@@ -1,11 +1,11 @@
 using Microsoft.Extensions.Options;
 using System.Data;
-using Movies.SQL.Repositories;
-using Movies.SQL.Factories;
-using Movies.SQL.Options;
+using Okkema.SQL.Repositories;
+using Okkema.SQL.Factories;
+using Okkema.SQL.Options;
 using Movies.TMDB.Entities;
 using Microsoft.Extensions.Logging;
-using Movies.SQL.Extensions;
+using Okkema.SQL.Extensions;
 namespace Movies.TMDB.Repositories;
 public class TMDBMovieRepository : RepositoryBase<TMDBMovieEntity>, ITMDBMovieRepository
 {

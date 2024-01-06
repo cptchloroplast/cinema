@@ -1,5 +1,9 @@
-using Movies.Worker;
 using Movies.TMDB.Extensions;
+using Movies.Commands.Handlers.Extensions;
+using Movies.Commands.Movies;
+using Movies.Queue.Extensions;
+using Movies.Queue.Producers;
+using Okkema.SQL.Extensions;
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
@@ -9,9 +13,20 @@ IConfiguration configuration = new ConfigurationBuilder()
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
-        services.AddTMDBServices(configuration);
-        services.AddHostedService<Worker>();
+        services
+            .AddSQLite(configuration)
+            .AddTMDBServices(configuration)
+            .AddMovieCommandHandlers(configuration)
+            .AddChannelProducer<CreateMovieV1>();
     })
     .Build();
+
+var services = host.Services;
+using var scope = services.CreateScope();
+var producer = scope.ServiceProvider.GetRequiredService<IProducer<CreateMovieV1>>();
+for (var i = 1; i <= 500; i++)
+{
+    await producer.WriteAsync(new CreateMovieV1 { TmdbId = i });
+}
 
 await host.RunAsync();

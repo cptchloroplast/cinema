@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-namespace Movies.SQL.Options;
+namespace Okkema.SQL.Options;
 public class DbConnectionOptions
 {
     [Required]

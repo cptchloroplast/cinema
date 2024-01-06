@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using FluentMigrator.Runner;
 using Microsoft.Extensions.Configuration;
-using Movies.SQL.Extensions;
-using Movies.SQL.Migrations;
+using Okkema.SQL.Extensions;
+using Movies.Migrations;
 using System.Reflection;
 
 var configuration = new ConfigurationBuilder()

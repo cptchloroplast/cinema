@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Movies.SQL\Movies.SQL.csproj" />
+    <ProjectReference Include="..\Okkema.SQL\Okkema.SQL.csproj" />
   </ItemGroup>
 
 </Project>

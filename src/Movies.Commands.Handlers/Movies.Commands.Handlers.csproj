@@ -4,7 +4,7 @@
     <ProjectReference Include="..\Movies.Commands\Movies.Commands.csproj" />
     <ProjectReference Include="..\Movies.Queue\Movies.Queue.csproj" />
     <ProjectReference Include="..\Movies.TMDB\Movies.TMDB.csproj" />
-    <ProjectReference Include="..\Movies.SQL\Movies.SQL.csproj" />
+    <ProjectReference Include="..\Okkema.SQL\Okkema.SQL.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

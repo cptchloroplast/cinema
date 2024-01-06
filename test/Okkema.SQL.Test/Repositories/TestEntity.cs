@@ -1,5 +1,5 @@
-using Movies.SQL.Entities;
-namespace Movies.SQL.Test.Repositories;
+using Okkema.SQL.Entities;
+namespace Okkema.SQL.Test.Repositories;
 public record TestEntity : EntityBase
 {
   public int Integer { get; set; }

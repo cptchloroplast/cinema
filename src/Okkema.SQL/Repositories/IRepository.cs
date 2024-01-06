@@ -1,5 +1,5 @@
-using Movies.SQL.Entities;
-namespace Movies.SQL.Repositories;
+using Okkema.SQL.Entities;
+namespace Okkema.SQL.Repositories;
 public interface IRepository<T> where T : EntityBase
 {
     /// <summary>

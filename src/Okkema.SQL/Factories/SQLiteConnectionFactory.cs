@@ -1,6 +1,6 @@
 using Microsoft.Data.Sqlite;
 using System.Data; 
-namespace Movies.SQL.Factories;
+namespace Okkema.SQL.Factories;
 public class SQLiteConnectionFactory : IDbConnectionFactory
 {
     public IDbConnection CreateConnection(string connectionString) => 

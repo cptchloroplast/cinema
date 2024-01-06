@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Options;
 using System.Data;
-using Movies.SQL.Options;
-using Movies.SQL.Factories;
-using Movies.SQL.Entities;
+using Okkema.SQL.Options;
+using Okkema.SQL.Factories;
+using Okkema.SQL.Entities;
 using Microsoft.Extensions.Logging;
-namespace Movies.SQL.Repositories;
+namespace Okkema.SQL.Repositories;
 public abstract class RepositoryBase<TEntity> : IRepository<TEntity> 
     where TEntity : EntityBase
 {

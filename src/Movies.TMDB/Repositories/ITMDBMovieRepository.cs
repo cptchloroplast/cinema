@@ -1,4 +1,4 @@
-using Movies.SQL.Repositories;
+using Okkema.SQL.Repositories;
 using Movies.TMDB.Entities;
 
 namespace Movies.TMDB.Repositories;

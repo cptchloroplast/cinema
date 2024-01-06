@@ -1,5 +1,5 @@
 using FluentMigrator;
-namespace Movies.SQL.Migrations;
+namespace Okkema.SQL.Test.Repositories;
 [Migration(20231230)]
 public class AddTestEntityTable : Migration
 {
