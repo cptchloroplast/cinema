@@ -23,7 +23,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Movies.Test\Movies.Test.csproj" />
-    <ProjectReference Include="..\..\src\Movies.Queue\Movies.Queue.csproj" />
+    <ProjectReference Include="..\..\src\Okkema.Queue\Okkema.Queue.csproj" />
   </ItemGroup>
 
 </Project>

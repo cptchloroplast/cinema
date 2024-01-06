@@ -1,8 +1,8 @@
 using Xunit;
 using Movies.Test;
 using System.Threading.Channels;
-using Movies.Queue.Consumers;
-using Movies.Queue.Producers;
+using Okkema.Queue.Consumers;
+using Okkema.Queue.Producers;
 using Moq;
 namespace Okkema.Cache.Test;
 public class ChannelQueueTest

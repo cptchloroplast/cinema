@@ -1,8 +1,8 @@
 using Movies.TMDB.Extensions;
 using Movies.Commands.Handlers.Extensions;
 using Movies.Commands.Movies;
-using Movies.Queue.Extensions;
-using Movies.Queue.Producers;
+using Okkema.Queue.Extensions;
+using Okkema.Queue.Producers;
 using Okkema.SQL.Extensions;
 
 IConfiguration configuration = new ConfigurationBuilder()

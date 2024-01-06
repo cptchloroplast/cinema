@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Movies.Commands\Movies.Commands.csproj" />
-    <ProjectReference Include="..\Movies.Queue\Movies.Queue.csproj" />
+    <ProjectReference Include="..\Okkema.Queue\Okkema.Queue.csproj" />
     <ProjectReference Include="..\Movies.TMDB\Movies.TMDB.csproj" />
     <ProjectReference Include="..\Okkema.SQL\Okkema.SQL.csproj" />
   </ItemGroup>

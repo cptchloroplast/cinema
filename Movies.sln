@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Test", "test\Movies.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okkema.Cache.Test", "test\Okkema.Cache.Test\Okkema.Cache.Test.csproj", "{E04AB32C-1994-439A-BAC6-EC041145769B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Queue", "src\Movies.Queue\Movies.Queue.csproj", "{8E55340D-8816-4E68-957B-0842C2A4B491}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okkema.Queue", "src\Okkema.Queue\Okkema.Queue.csproj", "{8E55340D-8816-4E68-957B-0842C2A4B491}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Queue.Test", "test\Movies.Queue.Test\Movies.Queue.Test.csproj", "{6AF8D440-9B62-4D1C-B7D2-1B78B8FFD06B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Okkema.Queue.Test", "test\Okkema.Queue.Test\Okkema.Queue.Test.csproj", "{6AF8D440-9B62-4D1C-B7D2-1B78B8FFD06B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Worker", "src\Movies.Worker\Movies.Worker.csproj", "{EDD2E254-B551-4C1B-A4D5-3521B11B9241}"
 EndProject

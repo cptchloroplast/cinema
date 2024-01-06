@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Movies.Queue.Consumers;
+using Okkema.Queue.Consumers;
 using Movies.TMDB.Services;
 using Movies.Commands.Movies;
 using Movies.TMDB.Entities;

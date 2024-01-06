@@ -1,9 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Movies.Queue.Consumers;
-using Movies.Queue.Producers;
+using Okkema.Queue.Consumers;
+using Okkema.Queue.Producers;
 using System.Threading.Channels;
-namespace Movies.Queue.Extensions;
+namespace Okkema.Queue.Extensions;
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddChannelConsumer<T>(this IServiceCollection services)

@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Movies.Queue.Extensions;
+using Okkema.Queue.Extensions;
 using Movies.Commands.Handlers.Movies;
 using Movies.Commands.Movies;
 namespace Movies.Commands.Handlers.Extensions;

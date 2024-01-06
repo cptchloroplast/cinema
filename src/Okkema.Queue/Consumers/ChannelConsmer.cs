@@ -1,5 +1,5 @@
 using System.Threading.Channels;
-namespace Movies.Queue.Consumers;
+namespace Okkema.Queue.Consumers;
 public sealed class ChannelConsumer<T> : IConsumer<T>
 {
     private readonly Channel<T> _channel;
