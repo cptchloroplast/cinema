@@ -5,7 +5,7 @@ using Moq.Contrib.HttpClient;
 using System.Net;
 using FluentAssertions;
 using System.Text.Json;
-using Movies.Test;
+using Okkema.Test;
 using Movies.TMDB.Models;
 using Movies.TMDB.Options;
 using Movies.TMDB.Services;
