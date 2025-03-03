@@ -1,0 +1,18 @@
+{
+  "name": "cinema",
+  "version": "0.1.0",
+  "description": "Movies Backend",
+  "main": "index.js",
+  "scripts": {
+    "build": "wrangler deploy src/index.ts --dry-run --outdir dist",
+    "start": "wrangler dev src/index.ts --show-interactive-dev-session false --test-scheduled",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Okkema <ben@okkema.org>",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20250224.0",
+    "@okkema/worker": "^3.6.2",
+    "wrangler": "3.105.0"
+  }
+}

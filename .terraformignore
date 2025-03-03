@@ -1,0 +1,4 @@
+*
+!terraform/
+!dist/
+terraform/.terraform/
