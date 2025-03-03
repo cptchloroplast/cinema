@@ -1,0 +1,3 @@
+name = "cinema"
+compatibility_date = "2024-12-30"
+compatibility_flags = [ "nodejs_compat_v2" ]

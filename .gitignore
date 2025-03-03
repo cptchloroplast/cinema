@@ -1,4 +1,5 @@
-bin
-obj
-.env
-*.db
+node_modules
+.terraform
+dist
+.dev.vars
+.wrangler
