@@ -23,13 +23,19 @@ export default SentryWorker<Environment>({
         docs_url: null
       }
     })
-    app.get("/movie/*", authorize("read:movies"), async function (c) {
-      c.res = await fetch(`${BASE_URL_V3}${new URL(c.req.url).pathname}`, {
+
+    async function handler(c) {
+      const url = new URL(c.req.url)
+      c.res = await fetch(`${BASE_URL_V3}${url.pathname}${url.search}`, {
         headers: {
           "Authorization": `Bearer ${env.TMDB_TOKEN}`
         }
       })
-    })
+    }
+
+    app.get("/movie/*", authorize("read:movies"), handler)
+    app.get("/search/movie", authorize("read:movies"), handler)
+    
     if (new URL(req.url).pathname === "/") 
       return new Response("Redirecting...", { 
         status: 301, 
